@@ -36,7 +36,18 @@ h2 a:visited {
 
 li p {
 	color: white;
-}	
+}
+
+#face-img {
+	display: relative;
+	width: 200px;
+	margin: 160px 0 0 160px;
+	border: 3px solid red;
+}
+
+#face-img:hover {
+	background: url('img/lookAt.jpg');
+}
 
 #wrapper {
 	position: absolute;
@@ -54,6 +65,7 @@ li p {
 	display: inline;
 	list-style-type: none;
 	margin: 5px;
+	background-color: white;
 }
 
 #contacts li:hover{
