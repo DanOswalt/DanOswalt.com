@@ -44,15 +44,6 @@ $(function () {
   
   //ui functions///////////////////////////////////////////////////////////////
   
-  function fancyCascadingColors() {
-    
-    delay = 1000;
-    interval = 200;
-    
-    $inputFields[9].delay(interval + delay * 1).css('border', 'solid 2px #4bc970');
-      
-  }
-  
   function clearFields() {
     $.each($inputFields, function (index) {
       field = $inputFields[index];
@@ -275,26 +266,38 @@ $(function () {
   //events///////////////////////////////////////////////////////////////
   
   //on each new keystroke in form, sum nonblank fields and update data
-  $inputFields.on('keydown', function() {
-    
+  $inputFields.on('focus', function() {
     $(this).css('border', 'solid 2px #4bc970',
+                'background-color', '#e8eeef');
+  })
+  $inputFields.on('click', function() {
+    $(this).css('border', 'solid 2px #4bc970',
+                'background-color', '#e8eeef');
+  })
+
+  $inputFields.on('blur', function() {
+    if($(this).val() === "") {
+      $(this).css('border', 'none');
+    } else {
+      $(this).css('border', 'solid 2px #111',
                 'background-color','#e8eeef');
-    
+    }
+  })
+
+  $inputFields.on('keydown', function() {
+
     playerCount = 0;
   
     $.each($inputFields, function (index) {
       field = $inputFields[index];
       if (field.value.length > 0) {
         playerCount += 1;
-      } else {
-        $(this).css('border', 'none');
-      }  
+      }
     });
    
     totalBattles = playerCount * (playerCount - 1) / 2;
    
     $submit.text(updateSubmitMessage());
-    
   });
   
   $submit.click( function () {
